@@ -13,7 +13,7 @@ def get_from_bin(filepath_input):
     byt = f.read()
     byt_size = int(len(byt) / 2) - 1
     f = open(filepath_input, 'rb')
-    lst = []
+    lst = [] a=0
     for i in range(byt_size):
         val = struct.unpack('H', f.read(2))[0]
         lst.append(val-32700)
