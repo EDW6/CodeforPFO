@@ -19,7 +19,6 @@ def get_from_bin(filepath_input):
         lst.append(val-32700)
     return lst
 
-
 def gets_from_bin(filepath_input):
     lst = get_from_bin(filepath_input)
     lst = np.array(lst)
