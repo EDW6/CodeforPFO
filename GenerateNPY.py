@@ -42,14 +42,15 @@ def fun_diff(data):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    base_root = r'F:\2022多模态\0322测试\纤细裸藻光语'
+    base_root = r'F:\2022多模态\0322测试\裸藻-状态可能不好了-水生所的'
     ch_name = ['ch2.bin', 'ch3.bin', 'ch4.bin', 'ch5.bin', 'ch1.bin']
 
     object_all = os.listdir(base_root)
     len_datafile = len(object_all)
     # len_datafile - 1
-    for list_num in range(2):
+    for list_num in range(len_datafile - 1):
         object_name = object_all[list_num+1]
+        print(object_name)
 
         for ch_num in ch_name:
             filepath = os.path.join(base_root, object_name, str(ch_num))
@@ -59,32 +60,35 @@ if __name__ == '__main__':
             store_name = ch_num[:3] + '.npy'
             np.save(file=store_name, arr=data_for_ch)
 
+            print('done')
 
+        filepath_s = base_root + '/' + object_name + '/ch8.bin'
+        datas = gets_from_bin(filepath_s)
+        print('done')
+        np.save(file='ch8.npy', arr=datas)
 
+    print('全部生成完毕')
 
-
-
-    data_optical_all = data1 + data0 + data90 + data45 + dataf
+    # data_optical_all = data1 + data0 + data90 + data45 + dataf
 
     # fig1 = plt.figure(num='fig111111')
     # plt.plot(data_optical_all)
     # plt.show()
-
-    data_o_diff = fun_diff(data_optical_all)
-
-    fig2 = plt.figure(num='fig121111')
+    #
+    # data_o_diff = fun_diff(data_optical_all)
+    #
+    # fig2 = plt.figure(num='fig121111')
     # plt.plot(data_o_diff)
     # plt.show()
 
-    filepath_s = base_root + '/' + object_name + 'ch8.bin'
-    datas = gets_from_bin(filepath_s)
 
-    data_to_store = np.concatenate((data1, data0, data90, data45), axis=0)
-    print(data_to_store.shape)
-    print(data1.shape)
+
+    # data_to_store = np.concatenate((data1, data0, data90, data45), axis=0)
+    # print(data_to_store.shape)
+    # print(data1.shape)
 
     # 找peaks
-    peak_id, peak_property = signal.find_peaks(datas, height=100, distance=200)
+    # peak_id, peak_property = signal.find_peaks(datas, height=100, distance=200)
     #
     #
     # plt.plot(datas)
