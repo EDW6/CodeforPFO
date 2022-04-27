@@ -32,12 +32,6 @@ def gets_from_bin(filepath_input):
     return lst_s
 
 
-def fun_diff(data):
-    data_diff = []
-    for i in range(len(data) - 1):
-        data_diff.append(data[i + 1] - data[i])
-
-    return data_diff
 
 
 # Press the green button in the gutter to run the script.
@@ -87,9 +81,7 @@ if __name__ == '__main__':
     # print(data_to_store.shape)
     # print(data1.shape)
 
-    # 找peaks
-    # peak_id, peak_property = signal.find_peaks(datas, height=100, distance=200)
-    #
+
     #
     # plt.plot(datas)
     # plt.show()
