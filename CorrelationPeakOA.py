@@ -6,9 +6,9 @@ from scipy import signal
 from scipy.fftpack import fft,ifft
 import random
 
+
 base_root = r'F:\2022多模态\0322测试\纤细裸藻光语'
 ch_name = ['ch2.npy', 'ch3.npy', 'ch4.npy', 'ch5.npy', 'ch1.npy']
-
 
 def fun_diff(data):
     data_diff = []
