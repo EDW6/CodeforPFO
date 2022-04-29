@@ -17,7 +17,6 @@ def fun_diff(data):
     data_diff = []
     for i in range(len(data) - 1):
         data_diff.append(data[i + 1] - data[i])
-
     return data_diff
 
 
