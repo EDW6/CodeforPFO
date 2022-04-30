@@ -26,19 +26,28 @@ dataL_for_ch = np.load(filepath)
 
 # 光颗粒物的位置，然后分类不同的颗粒物的情况，通过diff
 peakLight_id, peakLight_value = signal.find_peaks(dataL_for_ch, height=2000, distance=500)
-Type1_loc = []
-Type2_loc = []
-Type3_loc = []
+
+TypeWithPeaks_loc = []
+TypeOnlyPeaks_loc = []
+TypeNoPeak_loc = []
+
 # 对光脉冲做一个细致的划分
 for i in range(len(peakLight_id)):
+    print(i)
     loc = peakLight_id[i]
-    data2store_ch1 = dataL_for_ch[1, loc[i] - 99:loc[i] + 100] # 截取片段
-    data_o_diff = fun_diff(dataL_for_ch)
+    data2store_ch1 = dataL_for_ch[loc - 99:loc + 100]  # 截取片段
+    mean_clip = np.mean(data2store_ch1)
+    data_o_diff = fun_diff(data2store_ch1)
+    # plt.plot(data2store_ch1)
+
     mark_sign = max(data_o_diff)
 
-    if mark_sign < 200:
-        Type1_loc.append(loc)
-    elif mark_sign > 200 & mark_sign < 2000:
-        Type2_loc.append(loc)
-    elif mark_sign > 2000:
-        Type3_loc.append(loc)
+    if mark_sign < 5000:
+        if mean_clip > 4000:
+            TypeWithPeaks_loc.append(loc)
+        else:
+            TypeOnlyPeaks_loc.append(loc)
+    else:
+        TypeNoPeak_loc.append(loc)
+print('WithPeaks:%d\nOnlyPeaks:%d\nNoPeaks:%d\n' % (len(TypeWithPeaks_loc), len(TypeOnlyPeaks_loc), len(TypeNoPeak_loc)))
+
