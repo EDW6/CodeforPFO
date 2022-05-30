@@ -1,7 +1,18 @@
 # CodeforPFO
 ForMydevice
 
-Three kinds of particles may happen, they are 
-peaks+pulse, peak, pulse
+# 程序说明
+数据生成阶段：
+先用GenerateNPY跑每个采样文件夹，速度非常慢，
+然后对所有的npy文件进行一个整合，整合成大的数据文件
 
+数据分析阶段：
+用Findlocation对不同的脉冲进行分类，
+这边包括三种模态信息，即偏振散射，荧光，光声。
+然而散射信号是可以进一步细化为：散射脉冲，散射脉冲+尖峰，尖峰
+这个程序实现了这些信号的筛选，定位。
+
+后续分析：
+1. 相互关系分析 ---用venn5
+2. 画图，趋势分析
 
