@@ -1,9 +1,8 @@
 import os
-import sys
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from pyvenn.venn import venn5, get_labels
+from Statistics.venn import venn5, get_labels
 plt.rcParams ['font.sans-serif'] = ['SimHei']
 plt.rcParams ['axes.unicode_minus'] = False
 mpl.use('Agg')
