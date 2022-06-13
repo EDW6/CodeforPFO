@@ -1,16 +1,28 @@
-
 import os
 import numpy as np
-from Preprocessing.GenerateNPY import generate_number_from_bin
-from Preprocessing.MakeAll import make_whole_from_separate
-from Statistics.Findlocation import find_location_of_object
-
-base_root0 = r'///data/whjdata/连续测量每天/'
-print(base_root0)
-namelist = os.listdir(base_root0)
-print(namelist)
+import struct
+import time
+from scipy import signal
+import matplotlib.pyplot as plt
 
 
-# generate_number_from_bin(base_root0, namelist)
-# make_whole_from_separate(base_root0, namelist)
-find_location_of_object(base_root0, namelist)
+
+
+start = time.time()
+filepath = r'C:/Users/WANGHONGJIAN/Desktop/ch8.bin'
+
+end = time.time()
+print(end-start)
+
+lst = np.array(lst)
+end = time.time()
+print(end-start)
+
+# en1 = lst.reshape(lst.size)
+lst_s_temp = np.convolve(lst, np.ones((400,))/400, mode='same')# signal.medfilt(lst, kernel_size=401)
+lst_s = lst - lst_s_temp
+lst_s[:400] = 0
+lst_s[len(lst_s)-400:]=0
+end = time.time()
+print(end-start)
+print('done')
